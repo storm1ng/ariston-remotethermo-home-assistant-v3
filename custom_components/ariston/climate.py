@@ -88,11 +88,21 @@ class AristonThermostat(AristonEntity, ClimateEntity):
         except (AttributeError, ValueError):
             return BsbZoneMode.UNDEFINED
 
-    def _is_bsb_reduced_mode(self) -> bool:
-        """Check if BSB device is in reduced (manual night) mode."""
+    def _is_bsb_currently_reduced(self) -> bool:
+        """Check if BSB device is currently targeting the reduced setpoint.
+
+        Compares desiredRoomTemp against chRedTemp to determine whether the
+        active setpoint is the reduced one. Works for all modes including
+        Automatic (schedule-driven).
+        """
         if self.device.plant_mode_supported:
             return False
-        return self._get_bsb_zone_mode() == BsbZoneMode.MANUAL_NIGHT
+        zone_data = self.device.get_zone(self.zone)
+        desired = zone_data.get("desiredRoomTemp", None)
+        if desired is None:
+            return False
+        reduced = zone_data.get("chRedTemp", {}).get("value", None)
+        return desired == reduced
 
     @property
     def name(self) -> str:
@@ -124,21 +134,21 @@ class AristonThermostat(AristonEntity, ClimateEntity):
     @property
     def min_temp(self):
         """Return minimum temperature."""
-        if self._is_bsb_reduced_mode():
+        if self._is_bsb_currently_reduced():
             return self.device.get_reduced_temp_min(self.zone)
         return self.device.get_comfort_temp_min(self.zone)
 
     @property
     def max_temp(self):
         """Return the maximum temperature."""
-        if self._is_bsb_reduced_mode():
+        if self._is_bsb_currently_reduced():
             return self.device.get_reduced_temp_max(self.zone)
         return self.device.get_comfort_temp_max(self.zone)
 
     @property
     def target_temperature_step(self) -> float:
         """Return the target temperature step support by the device."""
-        if self._is_bsb_reduced_mode():
+        if self._is_bsb_currently_reduced():
             return self.device.get_reduced_temp_step(self.zone)
         return self.device.get_target_temp_step(self.zone)
 
@@ -149,9 +159,17 @@ class AristonThermostat(AristonEntity, ClimateEntity):
 
     @property
     def target_temperature(self) -> float:
-        """Return the target temperature for the device."""
-        if self._is_bsb_reduced_mode():
-            return self.device.get_reduced_temp_value(self.zone)
+        """Return the target temperature for the device.
+
+        For BSB devices, use desiredRoomTemp as the source of truth.
+        This reflects the actual active setpoint in all modes, including
+        the schedule-driven setpoint in Automatic mode.
+        """
+        if not self.device.plant_mode_supported:
+            zone_data = self.device.get_zone(self.zone)
+            desired = zone_data.get("desiredRoomTemp", None)
+            if desired is not None:
+                return desired
         return self.device.get_target_temp_value(self.zone)
 
     @property
@@ -365,7 +383,7 @@ class AristonThermostat(AristonEntity, ClimateEntity):
             self.name,
         )
 
-        if self._is_bsb_reduced_mode():
+        if self._is_bsb_currently_reduced():
             await self.device.async_set_reduced_temp(temperature, self.zone)
         else:
             await self.device.async_set_comfort_temp(temperature, self.zone)
