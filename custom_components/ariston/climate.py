@@ -22,10 +22,10 @@ from .entity import AristonEntity
 _LOGGER = logging.getLogger(__name__)
 
 BSB_ZONE_MODE_TEXTS: dict[int, str] = {
-    0: "Protection",
-    1: "Automatic",
-    2: "Reduced",
-    3: "Comfort",
+    0: "protection",
+    1: "automatic",
+    2: "reduced",
+    3: "comfort",
 }
 
 
@@ -62,6 +62,8 @@ async def async_setup_entry(
 
 class AristonThermostat(AristonEntity, ClimateEntity):
     """Ariston Thermostat Device."""
+
+    _attr_translation_key = "ariston_thermostat"
 
     def __init__(
         self,
