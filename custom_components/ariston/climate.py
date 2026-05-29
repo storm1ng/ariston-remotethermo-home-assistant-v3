@@ -72,14 +72,25 @@ class AristonThermostat(AristonEntity, ClimateEntity):
         """Initialize the thermostat."""
         super().__init__(coordinator, description, zone)
 
+    def _get_bsb_zone_mode(self) -> BsbZoneMode:
+        """Get BSB zone mode, working around upstream bug with value 0.
+
+        The upstream library uses `value or BsbZoneMode.UNDEFINED` which
+        treats 0 (Protection/OFF) as falsy, returning UNDEFINED (-1).
+        """
+        try:
+            value = self.device.get_zone(self.zone).get("mode", {}).get("value", None)
+            if value is None:
+                return BsbZoneMode.UNDEFINED
+            return BsbZoneMode(value)
+        except (AttributeError, ValueError):
+            return BsbZoneMode.UNDEFINED
+
     def _is_bsb_reduced_mode(self) -> bool:
         """Check if BSB device is in reduced (manual night) mode."""
         if self.device.plant_mode_supported:
             return False
-        try:
-            return self.device.get_zone_mode(self.zone) == BsbZoneMode.MANUAL_NIGHT
-        except (AttributeError, ValueError):
-            return False
+        return self._get_bsb_zone_mode() == BsbZoneMode.MANUAL_NIGHT
 
     @property
     def name(self) -> str:
@@ -216,11 +227,8 @@ class AristonThermostat(AristonEntity, ClimateEntity):
         if self.device.plant_mode_supported:
             return self.device.plant_mode_text
         # BSB device — map zone mode value to text
-        try:
-            mode = self.device.get_zone_mode(self.zone)
-            return BSB_ZONE_MODE_TEXTS.get(mode.value, str(mode.value))
-        except (AttributeError, ValueError):
-            return None
+        mode = self._get_bsb_zone_mode()
+        return BSB_ZONE_MODE_TEXTS.get(mode.value, str(mode.value))
 
     @property
     def preset_modes(self) -> list[str]:
