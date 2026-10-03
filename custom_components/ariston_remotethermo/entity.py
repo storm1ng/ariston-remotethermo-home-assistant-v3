@@ -24,6 +24,8 @@ _LOGGER = logging.getLogger(__name__)
 class AristonEntity(CoordinatorEntity, ABC):
     """Generic Ariston entity (base class)."""
 
+    _attr_has_entity_name = True
+
     def __init__(
         self,
         coordinator: DeviceDataUpdateCoordinator,
@@ -84,7 +86,7 @@ class AristonEntity(CoordinatorEntity, ABC):
     def unique_id(self):
         """Return the unique id."""
         return (
-            f"{self.device.gateway}-{self.name}-{self.zone}"
+            f"{self.device.gateway}-{self.entity_description.key}-{self.zone}"
             if self.zone
-            else f"{self.device.gateway}-{self.name}"
+            else f"{self.device.gateway}-{self.entity_description.key}"
         )

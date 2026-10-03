@@ -47,6 +47,72 @@
           }
         }
       }
+    },
+    "sensor": {
+      "heating_circuit_pressure": { "name": "Heating circuit pressure" },
+      "ch_flow_setpoint_temp": { "name": "CH flow setpoint temp" },
+      "ch_flow_temp": { "name": "CH flow temp" },
+      "signal_strength": { "name": "Signal strength" },
+      "ch_return_temp": { "name": "CH return temp" },
+      "outside_temp": { "name": "Outside temp" },
+      "average_showers": { "name": "Average showers" },
+      "gas_consumption_for_heating_last_month": { "name": "Gas consumption for heating last month" },
+      "electricity_consumption_for_heating_last_month": { "name": "Electricity consumption for heating last month" },
+      "electricity_consumption_for_cooling_last_month": { "name": "Electricity consumption for cooling last month" },
+      "gas_consumption_for_water_last_month": { "name": "Gas consumption for water last month" },
+      "electricity_consumption_for_water_last_month": { "name": "Electricity consumption for water last month" },
+      "central_heating_total_energy_consumption": { "name": "Central heating total energy consumption" },
+      "domestic_hot_water_total_energy_consumption": { "name": "Domestic hot water total energy consumption" },
+      "central_heating_gas_consumption": { "name": "Central heating gas consumption" },
+      "domestic_hot_water_heating_pump_electricity_consumption": { "name": "Domestic hot water heating pump electricity consumption" },
+      "domestic_hot_water_resistor_electricity_consumption": { "name": "Domestic hot water resistor electricity consumption" },
+      "domestic_hot_water_gas_consumption": { "name": "Domestic hot water gas consumption" },
+      "central_heating_electricity_consumption": { "name": "Central heating electricity consumption" },
+      "domestic_hot_water_electricity_consumption": { "name": "Domestic hot water electricity consumption" },
+      "remaining_time": { "name": "Remaining time" },
+      "heating_rate": { "name": "Heating rate" },
+      "errors_count": { "name": "Errors count" },
+      "current_temperature": { "name": "Current temperature" },
+      "proc_req_temp": { "name": "Proc req temp" }
+    },
+    "binary_sensor": {
+      "is_flame_on": { "name": "Is flame on" },
+      "is_heating_pump_on": { "name": "Is heating pump on" },
+      "holiday_mode": { "name": "Holiday mode" },
+      "is_heating": { "name": "Is heating" },
+      "anti_legionella_cycle": { "name": "Anti-legionella cycle" }
+    },
+    "switch": {
+      "automatic_thermoregulation": { "name": "Automatic thermoregulation" },
+      "is_quiet": { "name": "Is quiet" },
+      "eco_mode": { "name": "Eco mode" },
+      "power_option": { "name": "Power option" },
+      "power": { "name": "Power" },
+      "anti_legionella": { "name": "Anti legionella" },
+      "preheating": { "name": "Preheating" },
+      "boost": { "name": "Boost" },
+      "permanent_boost": { "name": "Permanent boost" },
+      "anti_cooling": { "name": "Anti cooling" },
+      "night_mode": { "name": "Night mode" }
+    },
+    "number": {
+      "elec_cost": { "name": "Elec cost" },
+      "gas_cost": { "name": "Gas cost" },
+      "max_setpoint_temperature": { "name": "Max setpoint temperature" },
+      "min_setpoint_temperature": { "name": "Min setpoint temperature" },
+      "reduced_temperature": { "name": "Reduced temperature" },
+      "heating_flow_temperature": { "name": "Heating flow temperature {zone}" },
+      "heating_flow_offset": { "name": "Heating flow offset {zone}" },
+      "requested_number_of_showers": { "name": "Requested number of showers" },
+      "anti_cooling_temperature": { "name": "Anti cooling temperature" }
+    },
+    "select": {
+      "currency": { "name": "Currency" },
+      "gas_type": { "name": "Gas type" },
+      "gas_energy_unit": { "name": "Gas energy unit" },
+      "hybrid_mode": { "name": "Hybrid mode" },
+      "buffer_control_mode": { "name": "Buffer control mode" },
+      "operation_mode": { "name": "Operation mode" }
     }
   }
 }

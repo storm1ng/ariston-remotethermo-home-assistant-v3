@@ -60,13 +60,8 @@ class AristonNumber(AristonEntity, NumberEntity):
     ) -> None:
         """Initialize the entity."""
         super().__init__(coordinator, description, zone)
-
-    @property
-    def name(self):
-        """Return the name of the entity."""
-        if self.zone:
-            return f"{self.entity_description.name} {self.zone}"
-        return self.entity_description.name
+        if zone:
+            self._attr_translation_placeholders = {"zone": str(zone)}
 
     @property
     def native_value(self):
