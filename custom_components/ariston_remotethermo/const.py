@@ -50,7 +50,6 @@ except ImportError:
 import datetime as dt
 
 DOMAIN: Final[str] = "ariston_remotethermo"
-NAME: Final[str] = "Ariston NET"
 MANUFACTURER: Final[str] = "Ariston Group"
 COORDINATOR: Final[str] = "coordinator"
 ENERGY_COORDINATOR: Final[str] = "energy_coordinator"
@@ -221,7 +220,7 @@ ARISTON_WATER_HEATER_TYPES: list[AristonWaterHeaterEntityDescription] = [
 ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     AristonSensorEntityDescription(
         key=DeviceProperties.HEATING_CIRCUIT_PRESSURE,
-        name=f"{NAME} heating circuit pressure",
+        translation_key="heating_circuit_pressure",
         device_class=SensorDeviceClass.PRESSURE,
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.MEASUREMENT,
@@ -231,7 +230,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=DeviceProperties.CH_FLOW_SETPOINT_TEMP,
-        name=f"{NAME} CH flow setpoint temp",
+        translation_key="ch_flow_setpoint_temp",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
         get_native_value=lambda entity: entity.device.ch_flow_setpoint_temp_value,
@@ -240,7 +239,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=DeviceProperties.CH_FLOW_TEMP,
-        name=f"{NAME} CH flow temp",
+        translation_key="ch_flow_temp",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
         get_native_value=lambda entity: entity.device.ch_flow_temp_value,
@@ -250,7 +249,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=str(MenuItemNames.SIGNAL_STRENGTH),
-        name=f"{NAME} signal strength",
+        translation_key="signal_strength",
         state_class=SensorStateClass.MEASUREMENT,
         entity_category=EntityCategory.DIAGNOSTIC,
         get_native_value=lambda entity: entity.device.signal_strength_value,
@@ -259,7 +258,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=str(MenuItemNames.CH_RETURN_TEMP),
-        name=f"{NAME} CH return temp",
+        translation_key="ch_return_temp",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
         get_native_value=lambda entity: entity.device.ch_return_temp_value,
@@ -268,7 +267,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=DeviceProperties.OUTSIDE_TEMP,
-        name=f"{NAME} Outside temp",
+        translation_key="outside_temp",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
         device_features=[CustomDeviceFeatures.HAS_OUTSIDE_TEMP],
@@ -278,7 +277,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=EvoLydosDeviceProperties.AV_SHW,
-        name=f"{NAME} average showers",
+        translation_key="average_showers",
         icon="mdi:shower-head",
         state_class=SensorStateClass.MEASUREMENT,
         get_native_value=lambda entity: entity.device.av_shw_value,
@@ -296,7 +295,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Gas consumption for heating last month",
-        name=f"{NAME} gas consumption for heating last month",
+        translation_key="gas_consumption_for_heating_last_month",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.ENERGY,
@@ -308,7 +307,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Electricity consumption for heating last month",
-        name=f"{NAME} electricity consumption for heating last month",
+        translation_key="electricity_consumption_for_heating_last_month",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.ENERGY,
@@ -320,7 +319,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Electricity consumption for cooling last month",
-        name=f"{NAME} electricity consumption for cooling last month",
+        translation_key="electricity_consumption_for_cooling_last_month",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.ENERGY,
@@ -332,7 +331,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Gas consumption for water last month",
-        name=f"{NAME} gas consumption for water last month",
+        translation_key="gas_consumption_for_water_last_month",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.ENERGY,
@@ -344,7 +343,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Electricity consumption for water last month",
-        name=f"{NAME} electricity consumption for water last month",
+        translation_key="electricity_consumption_for_water_last_month",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.ENERGY,
@@ -356,7 +355,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Central heating total energy consumption",
-        name=f"{NAME} central heating total energy consumption",
+        translation_key="central_heating_total_energy_consumption",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.TOTAL,
@@ -372,7 +371,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Domestic hot water total energy consumption",
-        name=f"{NAME} domestic hot water total energy consumption",
+        translation_key="domestic_hot_water_total_energy_consumption",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.TOTAL,
@@ -388,7 +387,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Central heating gas consumption",
-        name=f"{NAME} central heating gas consumption",
+        translation_key="central_heating_gas_consumption",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.TOTAL,
@@ -404,7 +403,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Domestic hot water heating pump electricity consumption",
-        name=f"{NAME} domestic hot water heating pump electricity consumption",
+        translation_key="domestic_hot_water_heating_pump_electricity_consumption",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.TOTAL,
@@ -420,7 +419,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Domestic hot water resistor electricity consumption",
-        name=f"{NAME} domestic hot water resistor electricity consumption",
+        translation_key="domestic_hot_water_resistor_electricity_consumption",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.TOTAL,
@@ -436,7 +435,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Domestic hot water gas consumption",
-        name=f"{NAME} domestic hot water gas consumption",
+        translation_key="domestic_hot_water_gas_consumption",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.TOTAL,
@@ -452,7 +451,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Central heating electricity consumption",
-        name=f"{NAME} central heating electricity consumption",
+        translation_key="central_heating_electricity_consumption",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.TOTAL,
@@ -468,7 +467,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key="Domestic hot water electricity consumption",
-        name=f"{NAME} domestic hot water electricity consumption",
+        translation_key="domestic_hot_water_electricity_consumption",
         icon="mdi:cash",
         entity_category=EntityCategory.DIAGNOSTIC,
         state_class=SensorStateClass.TOTAL,
@@ -484,7 +483,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=EvoDeviceProperties.RM_TM,
-        name=f"{NAME} remaining time",
+        translation_key="remaining_time",
         icon="mdi:timer",
         state_class=SensorStateClass.MEASUREMENT,
         get_native_value=lambda entity: entity.device.rm_tm_in_minutes,
@@ -500,7 +499,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=SlpDeviceSettings.SLP_HEATING_RATE,
-        name=f"{NAME} heating rate",
+        translation_key="heating_rate",
         icon="mdi:chart-line",
         state_class=SensorStateClass.MEASUREMENT,
         get_native_value=lambda entity: entity.device.water_heater_heating_rate,
@@ -510,7 +509,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=ARISTON_BUS_ERRORS,
-        name=f"{NAME} errors count",
+        translation_key="errors_count",
         icon="mdi:alert-outline",
         coordinator=BUS_ERRORS_COORDINATOR,
         state_class=SensorStateClass.MEASUREMENT,
@@ -526,7 +525,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=EvoOneDeviceProperties.TEMP,
-        name=f"{NAME} current temperature",
+        translation_key="current_temperature",
         icon="mdi:thermometer-auto",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
@@ -539,7 +538,7 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
     ),
     AristonSensorEntityDescription(
         key=VelisDeviceProperties.PROC_REQ_TEMP,
-        name=f"{NAME} proc req temp",
+        translation_key="proc_req_temp",
         icon="mdi:thermometer-auto",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
@@ -561,14 +560,14 @@ ARISTON_SENSOR_TYPES: list[AristonSensorEntityDescription] = [
 ARISTON_BINARY_SENSOR_TYPES: list[AristonBinarySensorEntityDescription] = [
     AristonBinarySensorEntityDescription(
         key=DeviceProperties.IS_FLAME_ON,
-        name=f"{NAME} is flame on",
+        translation_key="is_flame_on",
         icon="mdi:fire",
         get_is_on=lambda entity: entity.device.is_flame_on_value,
         system_types=[SystemType.GALEVO, SystemType.BSB],
     ),
     AristonBinarySensorEntityDescription(
         key=DeviceProperties.IS_HEATING_PUMP_ON,
-        name=f"{NAME} is heating pump on",
+        translation_key="is_heating_pump_on",
         icon="mdi:heat-pump-outline",
         get_is_on=lambda entity: entity.device.is_heating_pump_on_value,
         device_features=[DeviceFeatures.HYBRID_SYS],
@@ -576,7 +575,7 @@ ARISTON_BINARY_SENSOR_TYPES: list[AristonBinarySensorEntityDescription] = [
     ),
     AristonBinarySensorEntityDescription(
         key=DeviceProperties.HOLIDAY,
-        name=f"{NAME} holiday mode",
+        translation_key="holiday_mode",
         icon="mdi:island",
         extra_states=[
             {
@@ -589,7 +588,7 @@ ARISTON_BINARY_SENSOR_TYPES: list[AristonBinarySensorEntityDescription] = [
     ),
     AristonBinarySensorEntityDescription(
         key=EvoLydosDeviceProperties.HEAT_REQ,
-        name=f"{NAME} is heating",
+        translation_key="is_heating",
         icon="mdi:fire",
         get_is_on=lambda entity: entity.device.is_heating,
         system_types=[SystemType.VELIS],
@@ -605,7 +604,7 @@ ARISTON_BINARY_SENSOR_TYPES: list[AristonBinarySensorEntityDescription] = [
     ),
     AristonBinarySensorEntityDescription(
         key=EvoLydosDeviceProperties.ANTI_LEG,
-        name=f"{NAME} anti-legionella cycle",
+        translation_key="anti_legionella_cycle",
         icon="mdi:bacteria",
         get_is_on=lambda entity: entity.device.is_antileg,
         system_types=[SystemType.VELIS],
@@ -621,7 +620,7 @@ ARISTON_BINARY_SENSOR_TYPES: list[AristonBinarySensorEntityDescription] = [
 ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     AristonSwitchEntityDescription(
         key=DeviceProperties.AUTOMATIC_THERMOREGULATION,
-        name=f"{NAME} automatic thermoregulation",
+        translation_key="automatic_thermoregulation",
         icon="mdi:radiator",
         device_features=[DeviceFeatures.AUTO_THERMO_REG],
         set_value=lambda entity,
@@ -631,7 +630,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=DeviceProperties.IS_QUIET,
-        name=f"{NAME} is quiet",
+        translation_key="is_quiet",
         icon="mdi:volume-off",
         entity_category=EntityCategory.CONFIG,
         device_features=[DeviceProperties.IS_QUIET],
@@ -641,7 +640,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=EvoDeviceProperties.ECO,
-        name=f"{NAME} eco mode",
+        translation_key="eco_mode",
         icon="mdi:leaf",
         set_value=lambda entity, value: entity.device.async_set_eco_mode(value),
         get_is_on=lambda entity: entity.device.water_heater_eco_value,
@@ -657,7 +656,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=EvoDeviceProperties.PWR_OPT,
-        name=f"{NAME} power option",
+        translation_key="power_option",
         icon="mdi:leaf",
         set_value=lambda entity,
         value: entity.device.async_set_water_heater_power_option(value),
@@ -667,7 +666,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=VelisDeviceProperties.ON,
-        name=f"{NAME} power",
+        translation_key="power",
         icon="mdi:power",
         set_value=lambda entity, value: entity.device.async_set_power(value),
         get_is_on=lambda entity: entity.device.water_heater_power_value,
@@ -675,7 +674,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=MedDeviceSettings.MED_ANTILEGIONELLA_ON_OFF,
-        name=f"{NAME} anti legionella",
+        translation_key="anti_legionella",
         icon="mdi:bacteria-outline",
         entity_category=EntityCategory.CONFIG,
         set_value=lambda entity, value: entity.device.async_set_antilegionella(value),
@@ -693,7 +692,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=SlpDeviceSettings.SLP_PRE_HEATING_ON_OFF,
-        name=f"{NAME} preheating",
+        translation_key="preheating",
         icon="mdi:heat-wave",
         entity_category=EntityCategory.CONFIG,
         set_value=lambda entity, value: entity.device.async_set_preheating(value),
@@ -703,7 +702,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=NuosSplitProperties.BOOST_ON,
-        name=f"{NAME} boost",
+        translation_key="boost",
         icon="mdi:car-turbocharger",
         entity_category=EntityCategory.CONFIG,
         set_value=lambda entity, value: entity.device.async_set_water_heater_boost(
@@ -715,7 +714,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=SeDeviceSettings.SE_PERMANENT_BOOST_ON_OFF,
-        name=f"{NAME} permanent boost",
+        translation_key="permanent_boost",
         icon="mdi:car-turbocharger",
         entity_category=EntityCategory.CONFIG,
         set_value=lambda entity, value: entity.device.async_set_permanent_boost_value(
@@ -727,7 +726,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=SeDeviceSettings.SE_ANTI_COOLING_ON_OFF,
-        name=f"{NAME} anti cooling",
+        translation_key="anti_cooling",
         icon="mdi:snowflake-thermometer",
         entity_category=EntityCategory.CONFIG,
         set_value=lambda entity, value: entity.device.async_set_anti_cooling_value(
@@ -739,7 +738,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
     ),
     AristonSwitchEntityDescription(
         key=SeDeviceSettings.SE_NIGHT_MODE_ON_OFF,
-        name=f"{NAME} night mode",
+        translation_key="night_mode",
         icon="mdi:weather-night",
         entity_category=EntityCategory.CONFIG,
         set_value=lambda entity, value: entity.device.async_set_night_mode_value(value),
@@ -752,7 +751,7 @@ ARISTON_SWITCH_TYPES: list[AristonSwitchEntityDescription] = [
 ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     AristonNumberEntityDescription(
         key=ConsumptionProperties.ELEC_COST,
-        name=f"{NAME} elec cost",
+        translation_key="elec_cost",
         icon="mdi:currency-sign",
         entity_category=EntityCategory.CONFIG,
         native_min_value=0,
@@ -768,7 +767,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     ),
     AristonNumberEntityDescription(
         key=ConsumptionProperties.GAS_COST,
-        name=f"{NAME} gas cost",
+        translation_key="gas_cost",
         icon="mdi:currency-sign",
         entity_category=EntityCategory.CONFIG,
         native_min_value=0,
@@ -782,7 +781,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     ),
     AristonNumberEntityDescription(
         key=MedDeviceSettings.MED_MAX_SETPOINT_TEMPERATURE,
-        name=f"{NAME} max setpoint temperature",
+        translation_key="max_setpoint_temperature",
         icon="mdi:thermometer-high",
         entity_category=EntityCategory.CONFIG,
         get_native_min_value=lambda entity: entity.device.water_heater_maximum_setpoint_temperature_minimum,
@@ -804,7 +803,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     ),
     AristonNumberEntityDescription(
         key=SlpDeviceSettings.SLP_MIN_SETPOINT_TEMPERATURE,
-        name=f"{NAME} min setpoint temperature",
+        translation_key="min_setpoint_temperature",
         icon="mdi:thermometer-low",
         entity_category=EntityCategory.CONFIG,
         get_native_min_value=lambda entity: entity.device.water_heater_minimum_setpoint_temperature_minimum,
@@ -818,7 +817,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     ),
     AristonNumberEntityDescription(
         key=NuosSplitProperties.REDUCED_TEMP,
-        name=f"{NAME} reduced temperature",
+        translation_key="reduced_temperature",
         icon="mdi:thermometer-chevron-down",
         entity_category=EntityCategory.CONFIG,
         get_native_min_value=lambda entity: entity.device.water_heater_minimum_temperature,
@@ -832,7 +831,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     ),
     AristonNumberEntityDescription(
         key=ThermostatProperties.HEATING_FLOW_TEMP,
-        name=f"{NAME} heating flow temperature",
+        translation_key="heating_flow_temperature",
         icon="mdi:thermometer",
         entity_category=EntityCategory.CONFIG,
         zone=True,
@@ -854,7 +853,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     ),
     AristonNumberEntityDescription(
         key=ThermostatProperties.HEATING_FLOW_OFFSET,
-        name=f"{NAME} heating flow offset",
+        translation_key="heating_flow_offset",
         icon="mdi:progress-wrench",
         entity_category=EntityCategory.CONFIG,
         zone=True,
@@ -876,7 +875,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     ),
     AristonNumberEntityDescription(
         key=EvoOneDeviceProperties.AV_SHW,
-        name=f"{NAME} requested number of showers",
+        translation_key="requested_number_of_showers",
         icon="mdi:shower-head",
         native_min_value=0,
         get_native_max_value=lambda entity: entity.device.max_req_shower,
@@ -888,7 +887,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
     ),
     AristonNumberEntityDescription(
         key=SeDeviceSettings.SE_ANTI_COOLING_TEMPERATURE,
-        name=f"{NAME} anti cooling temperature",
+        translation_key="anti_cooling_temperature",
         icon="mdi:thermometer-alert",
         entity_category=EntityCategory.CONFIG,
         get_native_min_value=lambda entity: entity.device.anti_cooling_temperature_minimum,
@@ -904,7 +903,7 @@ ARISTON_NUMBER_TYPES: list[AristonNumberEntityDescription] = [
 ARISTON_SELECT_TYPES: list[AristonSelectEntityDescription] = [
     AristonSelectEntityDescription(
         key=ConsumptionProperties.CURRENCY,
-        name=f"{NAME} currency",
+        translation_key="currency",
         icon="mdi:cash-100",
         device_class=SensorDeviceClass.MONETARY,
         entity_category=EntityCategory.CONFIG,
@@ -917,7 +916,7 @@ ARISTON_SELECT_TYPES: list[AristonSelectEntityDescription] = [
     ),
     AristonSelectEntityDescription(
         key=ConsumptionProperties.GAS_TYPE,
-        name=f"{NAME} gas type",
+        translation_key="gas_type",
         icon="mdi:gas-cylinder",
         entity_category=EntityCategory.CONFIG,
         device_features=[DeviceFeatures.HAS_METERING],
@@ -929,7 +928,7 @@ ARISTON_SELECT_TYPES: list[AristonSelectEntityDescription] = [
     ),
     AristonSelectEntityDescription(
         key=ConsumptionProperties.GAS_ENERGY_UNIT,
-        name=f"{NAME} gas energy unit",
+        translation_key="gas_energy_unit",
         icon="mdi:cube-scan",
         entity_category=EntityCategory.CONFIG,
         device_features=[DeviceFeatures.HAS_METERING],
@@ -943,7 +942,7 @@ ARISTON_SELECT_TYPES: list[AristonSelectEntityDescription] = [
     ),
     AristonSelectEntityDescription(
         key=DeviceProperties.HYBRID_MODE,
-        name=f"{NAME} hybrid mode",
+        translation_key="hybrid_mode",
         icon="mdi:cog",
         entity_category=EntityCategory.CONFIG,
         device_features=[DeviceFeatures.HYBRID_SYS],
@@ -956,7 +955,7 @@ ARISTON_SELECT_TYPES: list[AristonSelectEntityDescription] = [
     ),
     AristonSelectEntityDescription(
         key=DeviceProperties.BUFFER_CONTROL_MODE,
-        name=f"{NAME} buffer control mode",
+        translation_key="buffer_control_mode",
         icon="mdi:cup-water",
         entity_category=EntityCategory.CONFIG,
         device_features=[DeviceFeatures.BUFFER_TIME_PROG_AVAILABLE],
@@ -968,7 +967,7 @@ ARISTON_SELECT_TYPES: list[AristonSelectEntityDescription] = [
     ),
     AristonSelectEntityDescription(
         key=EvoOneDeviceProperties.MODE,
-        name=f"{NAME} operation mode",
+        translation_key="operation_mode",
         icon="mdi:cog",
         get_current_option=lambda entity: entity.device.water_heater_current_mode_text,
         get_options=lambda entity: entity.device.water_heater_mode_operation_texts,

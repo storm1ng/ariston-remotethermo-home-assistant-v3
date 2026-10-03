@@ -47,6 +47,72 @@
           }
         }
       }
+    },
+    "sensor": {
+      "heating_circuit_pressure": { "name": "Heizkreisdruck" },
+      "ch_flow_setpoint_temp": { "name": "Vorlauf-Sollwert" },
+      "ch_flow_temp": { "name": "Vorlauftemperatur" },
+      "signal_strength": { "name": "Signalstärke" },
+      "ch_return_temp": { "name": "Rücklauftemperatur" },
+      "outside_temp": { "name": "Außentemperatur" },
+      "average_showers": { "name": "Durchschnittliche Duschen" },
+      "gas_consumption_for_heating_last_month": { "name": "Gasverbrauch Heizung letzter Monat" },
+      "electricity_consumption_for_heating_last_month": { "name": "Stromverbrauch Heizung letzter Monat" },
+      "electricity_consumption_for_cooling_last_month": { "name": "Stromverbrauch Kühlung letzter Monat" },
+      "gas_consumption_for_water_last_month": { "name": "Gasverbrauch Warmwasser letzter Monat" },
+      "electricity_consumption_for_water_last_month": { "name": "Stromverbrauch Warmwasser letzter Monat" },
+      "central_heating_total_energy_consumption": { "name": "Gesamtenergieverbrauch Heizung" },
+      "domestic_hot_water_total_energy_consumption": { "name": "Gesamtenergieverbrauch Warmwasser" },
+      "central_heating_gas_consumption": { "name": "Gasverbrauch Heizung" },
+      "domestic_hot_water_heating_pump_electricity_consumption": { "name": "Stromverbrauch Warmwasser-Wärmepumpe" },
+      "domestic_hot_water_resistor_electricity_consumption": { "name": "Stromverbrauch Warmwasser-Heizstab" },
+      "domestic_hot_water_gas_consumption": { "name": "Gasverbrauch Warmwasser" },
+      "central_heating_electricity_consumption": { "name": "Stromverbrauch Heizung" },
+      "domestic_hot_water_electricity_consumption": { "name": "Stromverbrauch Warmwasser" },
+      "remaining_time": { "name": "Verbleibende Zeit" },
+      "heating_rate": { "name": "Aufheizrate" },
+      "errors_count": { "name": "Anzahl Fehler" },
+      "current_temperature": { "name": "Aktuelle Temperatur" },
+      "proc_req_temp": { "name": "Angeforderte Temperatur" }
+    },
+    "binary_sensor": {
+      "is_flame_on": { "name": "Flamme an" },
+      "is_heating_pump_on": { "name": "Wärmepumpe an" },
+      "holiday_mode": { "name": "Urlaubsmodus" },
+      "is_heating": { "name": "Heizt" },
+      "anti_legionella_cycle": { "name": "Anti-Legionellen-Zyklus" }
+    },
+    "switch": {
+      "automatic_thermoregulation": { "name": "Automatische Temperaturregelung" },
+      "is_quiet": { "name": "Leise" },
+      "eco_mode": { "name": "Eco-Modus" },
+      "power_option": { "name": "Leistungsoption" },
+      "power": { "name": "Ein/Aus" },
+      "anti_legionella": { "name": "Anti-Legionellen" },
+      "preheating": { "name": "Vorheizen" },
+      "boost": { "name": "Boost" },
+      "permanent_boost": { "name": "Dauer-Boost" },
+      "anti_cooling": { "name": "Auskühlschutz" },
+      "night_mode": { "name": "Nachtmodus" }
+    },
+    "number": {
+      "elec_cost": { "name": "Stromkosten" },
+      "gas_cost": { "name": "Gaskosten" },
+      "max_setpoint_temperature": { "name": "Maximaler Sollwert" },
+      "min_setpoint_temperature": { "name": "Minimaler Sollwert" },
+      "reduced_temperature": { "name": "Reduzierter Sollwert" },
+      "heating_flow_temperature": { "name": "Vorlauftemperatur {zone}" },
+      "heating_flow_offset": { "name": "Vorlauf-Offset {zone}" },
+      "requested_number_of_showers": { "name": "Angeforderte Anzahl Duschen" },
+      "anti_cooling_temperature": { "name": "Auskühlschutz-Temperatur" }
+    },
+    "select": {
+      "currency": { "name": "Währung" },
+      "gas_type": { "name": "Gasart" },
+      "gas_energy_unit": { "name": "Gas-Energieeinheit" },
+      "hybrid_mode": { "name": "Hybridmodus" },
+      "buffer_control_mode": { "name": "Pufferregelungsmodus" },
+      "operation_mode": { "name": "Betriebsmodus" }
     }
   }
 }
