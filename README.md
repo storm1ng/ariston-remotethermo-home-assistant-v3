@@ -1,5 +1,5 @@
 [![CodeQL](https://github.com/storm1ng/ariston-remotethermo-home-assistant-v3/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/storm1ng/ariston-remotethermo-home-assistant-v3/actions/workflows/codeql.yml)
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
 [![HACS Action](https://github.com/storm1ng/ariston-remotethermo-home-assistant-v3/actions/workflows/hacs.yml/badge.svg)](https://github.com/storm1ng/ariston-remotethermo-home-assistant-v3/actions/workflows/hacs.yml)
 [![Validate with hassfest](https://github.com/storm1ng/ariston-remotethermo-home-assistant-v3/actions/workflows/hassfest.yml/badge.svg)](https://github.com/storm1ng/ariston-remotethermo-home-assistant-v3/actions/workflows/hassfest.yml)
 # Ariston NET remotethermo integration for Home Assistant
