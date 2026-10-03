@@ -1,6 +1,6 @@
 {
-  "domain": "ariston",
-  "name": "Ariston",
+  "domain": "ariston_remotethermo",
+  "name": "Ariston NET",
   "codeowners": ["@storm1ng"],
   "config_flow": true,
   "dependencies": [],
@@ -11,6 +11,6 @@
   "loggers": ["ariston"],
   "requirements": ["ariston==0.19.9"],
   "ssdp": [],
-  "version": "0.20.0",
+  "version": "0.30.0",
   "zeroconf": []
 }
