@@ -29,7 +29,7 @@
           "energy_scan_interval": "Energie-Abfrageintervall (Minuten)",
           "bus_errors_scan_interval": "Bus-Fehler-Abfrageintervall (Sekunden)"
         },
-        "title": "Ariston konfigurieren"
+        "title": "Ariston NET konfigurieren"
       }
     }
   },

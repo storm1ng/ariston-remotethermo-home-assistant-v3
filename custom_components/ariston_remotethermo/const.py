@@ -49,8 +49,9 @@ except ImportError:
 
 import datetime as dt
 
-DOMAIN: Final[str] = "ariston"
-NAME: Final[str] = "Ariston"
+DOMAIN: Final[str] = "ariston_remotethermo"
+NAME: Final[str] = "Ariston NET"
+MANUFACTURER: Final[str] = "Ariston Group"
 COORDINATOR: Final[str] = "coordinator"
 ENERGY_COORDINATOR: Final[str] = "energy_coordinator"
 ENERGY_SCAN_INTERVAL: Final[str] = "energy_scan_interval"
