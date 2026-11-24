@@ -9,8 +9,8 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/storm1ng/ariston-remotethermo-home-assistant-v3/issues",
   "loggers": ["ariston"],
-  "requirements": ["ariston==0.19.9"],
+  "requirements": ["ariston==0.19.17"],
   "ssdp": [],
-  "version": "0.40.0",
+  "version": "0.40.1",
   "zeroconf": []
 }
